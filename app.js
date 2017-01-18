@@ -27,36 +27,41 @@ const ProductList = React.createClass({
 });
 
 
-
 const Product = React.createClass({
   render: function() {
     return (
-      <div className="item">
-
-        <div className="image">
+      <div className='item'>
+        <div className='image'>
           <img src={this.props.product_image_url} />
         </div>
-
-        <div className="middle aligned content">
-          <div className="description">
-            <a> {this.props.title} </a>
-            <p> {this.props.description} </p>
+        <div className='middle aligned content'>
+          <div className='ui grid'>
+            <div className='twelve wide column'>
+              <div className='header'>
+                <a href={this.props.url}>
+                  {this.props.title}
+                </a>
+              </div>
+              <div className='meta'>
+                <span></span>
+              </div>
+              <div className='description'>
+                <p>{this.props.description}</p>
+              </div>
+              <div className='extra'>
+                <span>Submitted by:</span>
+                <img
+                  className='ui avatar image'
+                  src={this.props.submitter_avatar_url}
+                />
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="extra">
-          <span> Submitted by: </span> 
-          <img className="ui avatar image" src={this.props.submitter_avatar_url} />
-        </div>
-
       </div>
+
     )
   }  
 });
-
-Product.propTypes = {
-  id: React.PropTypes.number,
-  title: React.PropTypes.string.isRequired
-};
 
 ReactDOM.render(<ProductList/>, document.getElementById('content'));
